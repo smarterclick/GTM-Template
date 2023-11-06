@@ -46,23 +46,6 @@ ___TEMPLATE_PARAMETERS___
 ]
 
 
-___SANDBOXED_JS_FOR_WEB_TEMPLATE___
-
-const injectScript = require('injectScript');
-const log = require('logToConsole');
-const copyFromWindow = require('copyFromWindow');
-const setInWindow = require('setInWindow');
-const smc = copyFromWindow('$smcInstall');
-const encodeUriComponent = require('encodeUriComponent');
-if(typeof smc === 'undefined' && typeof data.tagID === 'string' && data.tagID.length >= 3) {
-	setInWindow('$smcInstall', 1, true);
-    const url = 'https://smct.co/tm/gtm?t='+encodeUriComponent(data.tagID);
-    injectScript(url, data.gtmOnSuccess, data.gtmOnFailure, 'intently');
-} else {
-  	data.gtmOnFailure();
-}
-
-
 ___WEB_PERMISSIONS___
 
 [
